@@ -1,0 +1,13 @@
+language: minimal
+services:
+- docker
+script:
+- docker run -w /root/code-oss-arm64 -v `pwd`:/root/code-oss-arm64 dimkr/code-oss-arm64
+  ./build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: OuDHdcgAaPe4YtehrLzyXhGtsvvsiSd1k0ym/M5crtADaBs+YgMouMQuTA4kezq5nsax9frlU6UGwuV38tU+/X0QWjtg9iO5hbhvVCYIO9afCoJh1YGoBuJ5ZzNviCBD6HZRz6ma8rctEmIeJaJ5c9MAPZ1eZVyhniyXNzVteFsFg7Ie/iFM16cPNkJl0B5OlDtTBcbcNLrCgyYO9/ICkPChmaZ9kxerY5KVf1Da+Zld7Gr81TzXOmfyW/4sNaMJUzufoYvaT+J0JginZxTMglU92BZ9Rx7FsMHR+43z3rPkoHbilrA9hNxHxUxxQpmaznudEhQNMni6wpgBzX6CPdXHaawjFr/5pGXMCmj1V8vJzOGGT7t6Ua03KuIzQzdTv1EcgIW2kTOqY5cdPdHj04ddhbc0m3s8KdTx004T1dNCaRwtICC2hIjPa7bHqUqZbz3onbWPO5czl0vY07B9WvmdWKnDl1Qe1pV6eD11sxbszrBJH3KCd+7DeUycV13SFU0yXcS1B1rZaTxybhDLRrwzQBRQKR/2S3J7CUoXjPe6BwPFAcwY1QI/qGvPJOsdKeuaZ0G4FHYyZedkjWAnHt4zew4RiTKB4R5aMPT1jN3JHZgI5DYXeJMAVyl0DzNEadAinPE8ATlI+k4QOD646YuRkfjPcssajvnnkt7Hvk8=
+  file: vscode/.build/linux/deb/**/*.deb
+  on:
+    repo: dimkr/code-oss-arm64
