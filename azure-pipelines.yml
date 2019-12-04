@@ -1,0 +1,10 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  imageName: dimkr/code-oss-arm64
+
+steps:
+- checkout: self
+- script: docker run -w /root/code-oss-arm64 -v `pwd`:/root/code-oss-arm64 $(imageName) ./build.sh
+  displayName: 'Build script'
