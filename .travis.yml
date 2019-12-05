@@ -4,6 +4,7 @@ language: minimal
 services:
 - docker
 script:
+- docker build -t dimkr/code-oss-arm64 .
 - docker run -w /root/code-oss-arm64 -v `pwd`:/root/code-oss-arm64 dimkr/code-oss-arm64
   ./build.sh
 deploy:
